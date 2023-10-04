@@ -1,0 +1,169 @@
+#importing all the diffrent modules
+from random import choice
+from random import randint
+from time import sleep
+
+
+count = 0
+#define the function for the start up animation
+def startup() :
+    print("\nSTARTING UP CHATBOT v1.00")
+    #the "loading" things aren't necessary, it just looks better with loading
+    print("Loading lists")
+    sleep(0.2)
+    print("Loading code")
+    sleep(0.2)
+    print ("Chatbot Ready")
+    sleep(0.2)
+    print ("...")
+    sleep(0.2)
+    print ("Hi")
+rps = ("please choose r for rock, p for paper and s for scissors\n")
+
+
+options = ["r","p","s"]
+
+
+# make the list contaning everything the bot will stay
+
+
+
+
+jokes = ["Which knight invented King Arthur's Round Table? Sir Cumference.",
+"What did the teacher do with the student's report on cheese? She grated it.",
+"What's the difference between a piano and a fish? You can tune a piano, but you can't tuna fish.",
+"I used to be able to play piano by ear, but now I can only play it by hand.",
+"What do you call a factory that sells generally decent goods? A satisfactory.",
+"Why should you never eat a clock? Because it's too time-consuming.",
+"Did you hear about the claustrophobic astronaut? Poor guy really needed some space.","What was the mummy's favorite type of music? Wrap.",
+"Why are groups of fish so smart? Because they travel in schools.","What did the drummer name her twin daughters? Anna One, Anna Two.",
+"How many tickles can an octopus take? Tentacles!","Why did the invisible man turn down a job offer? He couldn't see himself doing it.",
+"What do you call a fake noodle? An impasta.","You hear about the restaurant called karma? There's no menu you get what you deserve",
+"What sits at the bottom of the sea? A nervous wreck","What did the left eye say to the right eye? Between me and you somthing smells",
+"What did one hat say to another? You wait hear, i'll go on a head","What did the pirate say when he turned 80? Aye matey"]
+
+
+questions = ["So, are you into science?\n","Hey, what books have you read recently?\n","So, has anything interesting happened in your life recently?\n",
+"What hobbies do you like?\n","Do you enjoy chatting with me?\n","Hey, what would you like to talk about?\n", "What have you been watching lately?\n","Do you watch anime?\n"]
+
+
+eightball = ["Yes", "No", "that is a decicion you need to make", "Of course" ,"NOOOOO"]
+
+
+
+
+responses = ["Interesting.","Ooh!","Oh, nice!","I see.","Alright","OH","Well, that's nice, I guess","Hold on, what were we talking about?",
+"If there are any improvements that you would like to have, please tell the creator.","TIP: Try saying joke for a joke!", "TIP : saying STOP(ALL CAPS) will stop the chatbot.",
+"Nice","Cool","Thats cool", "Alright","Mm-hmm.","Okay."]
+
+
+#defining the function to add more questions if we want to during the program
+def addtoquestions(whattoinsert) :
+    questions.insert(1,whattoinsert)
+
+
+print("Before we begin let me get to know you.")  
+nickname = input("What would you like me to call you?\n")
+age = input("How old are you?\n")
+favoriteColor = input("What's your favorite color?\n")
+favoriteSong = input("What's your favorite music genre?\n")
+addtoquestions("So, for the record, you are {} years old, correct?\n".format(age))
+addtoquestions("Your favorite genre of music is {}, right?\n ".format(favoriteSong))
+addtoquestions("Your favorite color is {}, right?\n ".format(favoriteColor))
+sleep (0.2)
+
+
+
+
+
+
+
+
+print("Welcome, {}!\n".format(nickname))
+info = (age , favoriteColor, favoriteSong)
+sleep(0.2)
+#list of commands
+print("LIST OF COMMANDS (Case-sensitive (Capitals matter))\nSTOP: Stops the program.\njoke: Tells a joke.\nrockpaperscissors: Plays rock paper scissors.\nrandomnumber: plays a game where you need to pick a random number\ndiceroll; rolls a dice\n8ball: gives you a yes or no answer")
+
+
+startup()
+
+
+# main bot loop
+while 1:
+    count = count + 1
+    if count > 1:
+        response = input(choice(questions))
+    else:
+        response = input()
+
+
+    if response == "STOP":
+        break
+ 
+    if response == "joke":
+        print("SCANNING JOKE LIST")
+        sleep(0.3)
+        print(choice(jokes))
+ 
+    if response == "rockpaperscissors":
+        sleep(0.2)
+        computerchoice = (choice(options))
+        playerchoice = input(rps)
+        if computerchoice == playerchoice:
+            print ("its a draw")
+           
+        if computerchoice == "r" and playerchoice == "s":
+            print("computer wins")
+       
+        if computerchoice == "s" and playerchoice == "p":
+            print("computer wins")
+           
+        if computerchoice == "p" and playerchoice == "r":
+            print("computer wins")
+           
+        if computerchoice == "p" and playerchoice == "s":
+            print("player wins")
+           
+        if computerchoice == "r" and playerchoice == "p":
+            print("player wins")
+           
+        if computerchoice == "s" and playerchoice == "r":
+            print("player wins")  
+
+
+        print("the computer choose {}".format(computerchoice))
+        #Insert rock paper scissors here
+       
+    if response == "randomnumber":
+        random = randint(1,10)
+        guess = input("pick my number between 1 and 10\n")
+        guess2 = int(guess)
+        if random == guess2:
+            print("YOU GOT IT")
+           
+        if random != guess2:
+            print("... dam you dident get it")
+
+
+    if response == "diceroll":
+        print(randint(1,6))
+
+
+   
+    if response == "8ball":
+        print(choice(eightball))
+   
+   
+    if count != 1:
+        print(choice(responses))
+
+
+    sleep(0.1)
+    print("...")
+    sleep(0.2)
+
+
+#when they break this will print
+print("Thank you for starting up Chatbot")
+print("You responded {} times!".format(count))
